@@ -101,8 +101,9 @@ public class MainActivity extends AppCompatActivity implements VideoListAdapter.
     @Override
     public void onMediaFileSelected(String path) {
         progressDialog.show();
-        CommentBuilder commentBuilder=new CommentBuilder(path,"/storage/emulated/0/aaaa.mp4");
 
+        CommentBuilder commentBuilder=new CommentBuilder(path,"/storage/emulated/0/aaaa.mp4");
+        commentBuilder.setSize(VideoHelper.getInstance().getExpectedResolution(path, CommentBuilder.Default_Width, CommentBuilder.Default_Width));
         videoKit.process(commentBuilder,this);
     }
 
