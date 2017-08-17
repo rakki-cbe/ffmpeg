@@ -1,0 +1,14 @@
+#!/bin/bash
+export DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PARENT="$(dirname "${DIR}")"
+export NDK="$(dirname "${PARENT}")"
+export PATH="$PATH:$NDK"
+export PROJECT_JNI="$(dirname "${NDK}")/JNI/app/jni"
+export PROJECT_LIBS="$(dirname "${NDK}")/JNI/app/libs"
+#export CONFIGURATION="pass here additional configuration flags if you want to"
+export ADDI_CFLAGS="-fPIC"
+export ADDI_LDFLAGS="-Wl,-z,defs"
+export COMMON="--disable-static --disable-programs --disable-doc --enable-shared --enable-protocol=file --enable-pic --enable-small"
+
+./build_armeabi-v7a.sh
+
